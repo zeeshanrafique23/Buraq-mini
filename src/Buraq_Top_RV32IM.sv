@@ -79,4 +79,8 @@ ICCM#(DataWidth,AddrWidth)InstructionMemory
     .readData(Ins_mem_out)    
 );
 
+<<<<<<< HEAD
 endmodule: Buraq_Top_RV32IM
+=======
+endmodule: Buraq_Top_RV32IM
+>>>>>>> 8d2c8cf1fff13e00f915160ae8dc0100200f9a06
