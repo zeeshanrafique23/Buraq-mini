@@ -148,7 +148,7 @@ always @(posedge brq_clk)begin
     end
 end
 ////////////////////////////////////////////////////////////////////
-RegFile #(DataWidth,No_of_registers,RegAddrWidth) RegisterFile
+Reg_File #(DataWidth,No_of_registers,RegAddrWidth) RegisterFile
      (
         .brq_clk(brq_clk),
         .brq_rst(brq_rst),
