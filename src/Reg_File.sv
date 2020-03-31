@@ -1,11 +1,11 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: MERL
+// Company: MERL-UIT
 // Engineer: 
 // 
 // Create Date: 12/20/2019 05:59:22 PM
-// Design Name: BSV32I_SSC
-// Module Name: regFile
+// Design Name: Buraq-mini-RV32IM
+// Module Name: Reg-File
 // Project Name: BURAQ
 // Target Devices: Arty A7 35T
 // Tool Versions: 
@@ -67,4 +67,4 @@ assign readData1 = regFile[source1];
 assign readData2 = regFile[source2];
 
 assign Reg_Out   = regFile[15];
-endmodule:regFile
+endmodule:Reg_File

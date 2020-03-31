@@ -1,11 +1,11 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: MERL
+// Company: MERL-UIT
 // Engineer: 
 // 
 // Create Date: 12/20/2019 06:32:15 PM
-// Design Name: BSV32I_SSC
-// Module Name: ImmGen
+// Design Name: Buraq-mini-RV32IM
+// Module Name: Imm-Gen
 // Project Name: BURAQ
 // Target Devices: Arty A7 35T
 // Tool Versions: 
@@ -51,4 +51,4 @@ always_comb begin
     uj_type = {UJ_type[20]  ? 11'h7FF   : 11'd0,UJ_type} + pc;
 end
 
-endmodule:ImmGen
+endmodule:Imm_Gen

@@ -1,11 +1,11 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: MERL
+// Company: MERL-UIT
 // Engineer: 
 // 
 // Create Date: 12/21/2019 06:26:51 PM
-// Design Name: BSV32I_SSC
-// Module Name: BSV32I_SSC
+// Design Name: Buraq-mini-RV32IM
+// Module Name: Buraq-RV32IM
 // Project Name: BURAQ
 // Target Devices: Arty A7 35T
 // Tool Versions: 
@@ -19,7 +19,7 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-module Buraq_RV32IM (
+module Buraq_RV32IM #(
 parameter DataWidth=32,
 parameter AddrWidth=15,
 parameter RegAddrWidth=5
@@ -232,4 +232,4 @@ WBU #(DataWidth,RegAddrWidth) WriteBack_unit
      .wbu_addr_dst(wbu_addr_dst)
 );
 
-endmodule:BSV32IM_FSPL
+endmodule:Buraq_RV32IM

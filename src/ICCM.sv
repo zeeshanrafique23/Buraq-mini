@@ -1,13 +1,13 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: 
+// Company: MERL-UIT
 // Engineer: 
 // 
 // Create Date: 12/28/2019 10:43:10 AM
-// Design Name: 
-// Module Name: Ins_mem
-// Project Name: 
-// Target Devices: 
+// Design Name: Buraq-mini-RV32IM
+// Module Name: ICCM
+// Project Name: BURAQ
+// Target Devices: Arty A7 35T
 // Tool Versions: 
 // Description: 
 // 

@@ -1,11 +1,11 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: MERL
+// Company: MERL-UIT
 // Engineer: 
 // 
 // Create Date: 12/21/2019 06:44:56 PM
-// Design Name: BSV32I_SSC
-// Module Name: WriteBack
+// Design Name: Buraq-mini-RV32IM
+// Module Name: WBU
 // Project Name: BURAQ
 // Target Devices: Arty A7 35T
 // Tool Versions: 

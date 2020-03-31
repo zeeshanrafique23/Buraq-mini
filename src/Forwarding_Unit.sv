@@ -1,13 +1,13 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: 
+// Company: MERL-UIT
 // Engineer: 
 // 
 // Create Date: 01/05/2020 12:50:54 PM
-// Design Name: 
+// Design Name: Buraq-mini-RV32IM
 // Module Name: Forwarding_Unit
-// Project Name: 
-// Target Devices: 
+// Project Name: BURAQ
+// Target Devices: Arty A7 35T
 // Tool Versions: 
 // Description: 
 // 

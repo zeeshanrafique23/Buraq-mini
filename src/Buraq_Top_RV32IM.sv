@@ -1,11 +1,11 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: MERL
+// Company: MERL-UIT
 // Engineer: 
 // 
 // Create Date: 12/22/2019 01:37:48 AM
-// Design Name: BSV32I_SSC
-// Module Name: RISCV32I_SV
+// Design Name: Buraq-mini-RV32IM
+// Module Name: Buraq_Top_RV32IM
 // Project Name: BURAQ
 // Target Devices: Arty A7 35T
 // Tool Versions: 
@@ -79,4 +79,4 @@ ICCM#(DataWidth,AddrWidth)InstructionMemory
     .readData(Ins_mem_out)    
 );
 
-endmodule: RISCV32I_SV
+endmodule: Buraq_Top_RV32IM

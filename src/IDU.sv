@@ -1,11 +1,11 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: MERL
+// Company: MERL-UIT
 // Engineer: 
 // 
 // Create Date: 12/20/2019 07:26:31 PM
-// Design Name: BSV32I_SSC
-// Module Name: Decode
+// Design Name: Buraq-mini-RV32IM
+// Module Name: IDDU
 // Project Name: BURAQ
 // Target Devices: ATRY 7 A35 T
 // Tool Versions: 

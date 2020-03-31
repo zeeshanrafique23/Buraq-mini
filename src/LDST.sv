@@ -1,13 +1,13 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: 
+// Company: MERL-UIT
 // Engineer: 
 // 
 // Create Date: 01/04/2020 06:05:18 PM
-// Design Name: 
-// Module Name: MEM_WB
-// Project Name: 
-// Target Devices: 
+// Design Name: Buraq-mini-RV32IM
+// Module Name: LDST
+// Project Name: BURAQ
+// Target Devices: Arty A7 35T
 // Tool Versions: 
 // Description: 
 // 

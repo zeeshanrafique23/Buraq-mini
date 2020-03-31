@@ -4,8 +4,8 @@
 // Engineer: 
 // 
 // Create Date: 12/19/2019 05:32:01 PM
-// Design Name: BSV32I_SSC
-// Module Name: control_unit
+// Design Name: Buraq-mini-RV32IM
+// Module Name: Cotrol_Unit
 // Project Name: BURAQ
 // Target Devices: Arty A7 35T
 // Tool Versions: 
@@ -73,4 +73,4 @@ module Control_Unit (
                            (opcode == JAL)?     2'b10 : 
                            (opcode == JALR)?    2'b11 : 2'b00; 
                                                       
-endmodule:control_unit
+endmodule:Control_Unit

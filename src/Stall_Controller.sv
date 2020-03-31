@@ -1,13 +1,13 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: 
+// Company: MERL-UIT
 // Engineer: 
 // 
 // Create Date: 03/11/2020 09:50:46 PM
-// Design Name: 
+// Design Name: Buraq-mini-RV32IM
 // Module Name: Stall_Controller
-// Project Name: 
-// Target Devices: 
+// Project Name: BURAQ
+// Target Devices: Arty A7 35T
 // Tool Versions: 
 // Description: 
 // 
