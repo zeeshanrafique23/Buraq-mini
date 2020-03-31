@@ -19,7 +19,7 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-module RISCV32I_SV #(
+module Buraq_Top_RV32IM #(
 parameter DataWidth=32,
 parameter AddrWidth=15,
 parameter RegAddrWidth=5
@@ -40,7 +40,7 @@ logic [2:0]byte_en;
 logic D_mem_readEn;
 logic D_mem_writeEn;
 
-BSV32IM_FSPL#(DataWidth,AddrWidth,RegAddrWidth)Core
+Buraq_RV32IM#(DataWidth,AddrWidth,RegAddrWidth)Core
 (
         .brq_clk(brq_clk),
         .brq_rst(brq_rst),

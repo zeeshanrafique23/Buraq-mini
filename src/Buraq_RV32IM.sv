@@ -19,7 +19,7 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-module BSV32IM_FSPL#(
+module Buraq_RV32IM (
 parameter DataWidth=32,
 parameter AddrWidth=15,
 parameter RegAddrWidth=5
