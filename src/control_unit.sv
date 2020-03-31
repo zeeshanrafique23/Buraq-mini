@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module control_unit (
+module Control_Unit (
     input [6:0] opcode,
     output logic branch_op,memRead,memtoReg,memWrite,regWriteEn,operand_B_sel,
     output logic [1:0] next_PC_sel,operand_A_sel, 

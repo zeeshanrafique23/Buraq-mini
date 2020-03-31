@@ -148,7 +148,7 @@ always @(posedge brq_clk)begin
     end
 end
 ////////////////////////////////////////////////////////////////////
-regFile #(DataWidth,No_of_registers,RegAddrWidth) RegisterFile
+RegFile #(DataWidth,No_of_registers,RegAddrWidth) RegisterFile
      (
         .brq_clk(brq_clk),
         .brq_rst(brq_rst),
@@ -163,7 +163,7 @@ regFile #(DataWidth,No_of_registers,RegAddrWidth) RegisterFile
         .Reg_Out(RegOut)
      );
 
-control_unit Control (
+Control_Unit Control (
         .opcode(opcode),
          //OUTPUTS//
         .branch_op(Branch_control_unit),
@@ -178,7 +178,7 @@ control_unit Control (
         .extend_sel(ImmSel)
     );
 
-ImmGen #(DataWidth) ImmediateGeneration
+Imm_Gen #(DataWidth) ImmediateGeneration
     (
         .pc(ifu_pc),
         .instruction(instruction_imm),

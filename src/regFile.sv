@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module regFile#(
+module RegFile#(
 parameter DataWidth=32,
 parameter Registers=32,
 parameter AddrRegWidth=5
