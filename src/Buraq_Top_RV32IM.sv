@@ -79,4 +79,4 @@ ICCM#(DataWidth,AddrWidth)InstructionMemory
     .readData(Ins_mem_out)    
 );
 
-endmodule: RISCV32I_SV
+endmodule: Buraq_Top_RV32IM
