@@ -20,6 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 module Buraq_RV32IM #(
+parameter HalfWord=16,
 parameter DataWidth=32,
 parameter AddrWidth=15,
 parameter RegAddrWidth=5
@@ -27,7 +28,8 @@ parameter RegAddrWidth=5
 (
     input  brq_clk,
     input  brq_rst,
-    input  [DataWidth-1:0]inst_mem_data,Data_mem_dataOut,
+    input  [HalfWord-1:0]inst_mem_lsb,inst_mem_msb,
+    input  [DataWidth-1:0]Data_mem_dataOut,
     output logic [DataWidth-1:0]Data_mem_dataIn,
     output logic [AddrWidth-1:0]inst_mem_address,Data_mem_address,
     output logic Data_mem_read_en,Data_mem_write_en,
@@ -83,7 +85,7 @@ logic ldst_regfile_en;
 logic ldst_memtoreg,idu_stall;
                                      ///********INSTANTIATING MODULES********///
 
-IFU#(DataWidth,AddrWidth) Fetch_unit
+IFU#(HalfWord,DataWidth,AddrWidth) Fetch_unit
 (
      .brq_clk(brq_clk),
      .brq_rst(brq_rst),
@@ -95,7 +97,8 @@ IFU#(DataWidth,AddrWidth) Fetch_unit
      .idu_branch_addr(idu_branch_addr),
      .idu_jal_addr(idu_jal_addr),
      .idu_jalr_addr(idu_jalr_addr),
-     .inst_mem_data(inst_mem_data),
+     .inst_mem_lsb(inst_mem_lsb),
+     .inst_mem_msb(inst_mem_msb),
      //OUTPUT//
      .ifu_stall(stall),
      .inst_mem_address(inst_mem_address),

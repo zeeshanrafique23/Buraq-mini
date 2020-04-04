@@ -21,6 +21,7 @@
 
 
 module IFU #(
+parameter HalfWord =16,
 parameter DataWidth=32,
 parameter AddrWidth=15
 )
@@ -34,16 +35,21 @@ parameter AddrWidth=15
     input [DataWidth-1:0]idu_branch_addr,
     input [DataWidth-1:0]idu_jalr_addr,
     input [DataWidth-1:0]idu_jal_addr,
-    input [DataWidth-1:0]inst_mem_data,
+    input [HalfWord-1:0]inst_mem_lsb,
+    input [HalfWord-1:0]inst_mem_msb,
     output logic ifu_stall,
     output logic [AddrWidth-1:0]inst_mem_address,
     output logic [DataWidth-1:0]ifu_pc,
     output logic [DataWidth-1:0]ifu_fetch_inst
 
 );
-
+logic i_type;
+logic [DataWidth-1:0]instruction;
 logic [DataWidth-1:0]PC_reg;
 logic [DataWidth-1:0]PC;
+//////////////////////////////////////////////////////////////////////////////////////
+Comp_Ins #(DataWidth) ins_compressed (inst_mem_lsb,inst_mem_msb,i_type,instruction);//	Module Instantiation for compressed instruction
+//////////////////////////////////////////////////////////////////////////////////////
 
 always @ (posedge brq_clk)begin
     if (brq_rst)
@@ -53,34 +59,39 @@ always @ (posedge brq_clk)begin
         PC_reg <=  PC_reg;
     else
         begin
-        if (ifu_next_pc_sel == 2'b10) begin               //JAL
-            PC_reg <=  idu_jal_addr;
+	if (!i_type)begin
+	      PC_reg <= PC_reg + 32'd2;
 	end
-        else if (ifu_next_pc_sel == 2'b11)begin           //JALR
-            PC_reg <=  idu_jalr_addr;
-	end
-        else if (ifu_next_pc_sel == 2'b01) begin     //Branch
-                  if (idu_branch == 1'b1) begin
-                      PC_reg <= idu_branch_addr;
-		  end
-                  else begin
-                      PC_reg <= PC_reg + 32'd4;
-		  end 
-        end
-        else if (ifu_next_pc_sel == 2'b00)begin      // PC + 4
-   		   PC_reg <= PC_reg + 32'd4;
-        end
-	else begin
-		  PC_reg <= PC_reg + 32'd4;
-	end
-    end
+        else begin
+        	if (ifu_next_pc_sel == 2'b10) begin               //JAL
+        	    PC_reg <=  idu_jal_addr;
+	 	end
+                else if (ifu_next_pc_sel == 2'b11)begin           //JALR
+                PC_reg <=  idu_jalr_addr;
+		end
+       		else if (ifu_next_pc_sel == 2'b01) begin          //Branch
+       		           if (idu_branch == 1'b1) begin
+       		               PC_reg <= idu_branch_addr;
+		           end
+       		           else begin
+       		               PC_reg <= PC_reg + 32'd4;
+		           end 
+        	end
+        	else if (ifu_next_pc_sel == 2'b00)begin      // PC + 4
+   			   PC_reg <= PC_reg + 32'd4;
+        	end
+		else begin
+			  PC_reg <= PC_reg + 32'd4;
+		end
+    	 end
+     end
 end
 
 assign PC = PC_reg;
-assign inst_mem_address  = PC[16:2];
-//////////////////////////////////////////////////////
+assign inst_mem_address  = PC[16:1];
+//////////////////////////////////////////////////////////
 Stall_Controller Staller(idu_stall,ieu_stall,ifu_stall);//    Stalling Module
-//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
     always@(posedge brq_clk)begin
         if(brq_rst)begin
 	    ifu_fetch_inst<=32'd0;
@@ -96,7 +107,7 @@ Stall_Controller Staller(idu_stall,ieu_stall,ifu_stall);//    Stalling Module
         end
         else begin
             ifu_pc <= PC;
-            ifu_fetch_inst<=inst_mem_data;
+            ifu_fetch_inst<=instruction;
         end    
     end  
 

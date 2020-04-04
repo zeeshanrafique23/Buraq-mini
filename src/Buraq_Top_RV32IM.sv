@@ -21,6 +21,7 @@
 
 module Buraq_Top_RV32IM #(
 parameter DataWidth=32,
+parameter HalfWord=16,
 parameter AddrWidth=15,
 parameter RegAddrWidth=5
 )
@@ -30,7 +31,8 @@ parameter RegAddrWidth=5
     output logic [DataWidth-1:0]Reg_Out
 );
 
-logic [DataWidth-1:0]Ins_mem_out;
+logic [HalfWord-1:0]Inst_lsb;
+logic [HalfWord-1:0]Inst_msb;
 logic [DataWidth-1:0]D_mem_out;
 logic [DataWidth-1:0]Ins_mem_data_in;
 logic [DataWidth-1:0]D_mem_data_in;
@@ -40,11 +42,12 @@ logic [2:0]byte_en;
 logic D_mem_readEn;
 logic D_mem_writeEn;
 
-Buraq_RV32IM#(DataWidth,AddrWidth,RegAddrWidth)Core
+Buraq_RV32IM#(HalfWord,DataWidth,AddrWidth,RegAddrWidth)Core
 (
         .brq_clk(brq_clk),
         .brq_rst(brq_rst),
-        .inst_mem_data(Ins_mem_out),
+        .inst_mem_lsb(Inst_lsb),
+        .inst_mem_msb(Inst_msb),
         .Data_mem_dataOut(D_mem_out),
         //OUTPUTS//
         .ldst_byte_en(byte_en),
@@ -68,7 +71,7 @@ DCCM#(DataWidth,AddrWidth)DataMemory
         .data_out(D_mem_out)
 );
 
-ICCM#(DataWidth,AddrWidth)InstructionMemory
+ICCM#(DataWidth,HalfWord,AddrWidth)InstructionMemory
 (
     .brq_clk(brq_clk),
     .address(Ins_mem_addr_in), 
@@ -76,7 +79,8 @@ ICCM#(DataWidth,AddrWidth)InstructionMemory
     .i_read(1'b1),
     .i_data(Ins_mem_data_in),
     //OUTPUT//
-    .readData(Ins_mem_out)    
+    .readData_lsb(Inst_lsb),
+    .readData_msb(Inst_msb)    
 );
 
 endmodule: Buraq_Top_RV32IM

@@ -19,9 +19,9 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-
 module ICCM#(
 parameter DataWidth=32,
+parameter HalfWord =16,
 parameter AddrWidth=15
 )(
     input brq_clk,
@@ -29,56 +29,43 @@ parameter AddrWidth=15
     input i_write,
     input i_read,
     input [DataWidth-1:0] i_data,
-    output logic [DataWidth-1:0] readData    
+    output logic [HalfWord-1:0] readData_lsb,
+    output logic [HalfWord-1:0] readData_msb    
     );
 
     localparam DEPTH = 2**AddrWidth;
-    logic [DataWidth-1:0] memory_array [0:DEPTH-1];
+    logic [HalfWord-1:0] memory [0:DEPTH-1];
 
     initial begin
     
-       $readmemh("hex_memory_file.mem",memory_array);
-
-    //memory_array[0]  = 32'h00500293;
-    //memory_array[1]  = 32'h00502A23;
-    //memory_array[2]  = 32'h005282B3;
-    //memory_array[3]  = 32'h01402283;
- 
-   // memory_array[0]  = 32'h0C800213;
-   // memory_array[1]  = 32'h00420233;
-   // memory_array[2]  = 32'h003AB2B7;
-   // memory_array[3]  = 32'h00021397;
-   // memory_array[4]  = 32'h00402423;
-   // memory_array[5]  = 32'h00000033;
-   // memory_array[6]  = 32'h00802403;
-
-
+       $readmemh("C:/Users/merllab/Desktop/Buraq-RV32IM-systemverilog/src/hex_memory_file.mem",memory);
 //Fibonacci Series
 /*
- memory_array[0]  = 32'h01100F13;
- memory_array[1]  = 32'h00000E33;
- memory_array[2]  = 32'h000003B3;
- memory_array[3]  = 32'h00000333;
- memory_array[4]  = 32'h00100313;
- memory_array[5]  = 32'h000382B3;
- memory_array[6]  = 32'h001E0E13;
- memory_array[7]  = 32'h006283B3;
- memory_array[8]  = 32'hFFCF02E3;   
- memory_array[9]  = 32'h001E7E93;   // main instruction
- memory_array[10] = 32'hFE0E86E3;
- memory_array[11] = 32'h00038333;
- memory_array[12] = 32'hFE9FF0EF;
+ memory[0]  = 32'h01100F13;
+ memory[1]  = 32'h00000E33;
+ memory[2]  = 32'h000003B3;
+ memory[3]  = 32'h00000333;
+ memory[4]  = 32'h00100313;
+ memory[5]  = 32'h000382B3;
+ memory[6]  = 32'h001E0E13;
+ memory[7]  = 32'h006283B3;
+ memory[8]  = 32'hFFCF02E3;   
+ memory[9]  = 32'h001E7E93;   // main instruction
+ memory[10] = 32'hFE0E86E3;
+ memory[11] = 32'h00038333;
+ memory[12] = 32'hFE9FF0EF;
 */
 
  end    
     
  always @(posedge brq_clk) begin
      if(i_write) begin
-         memory_array[address] <= i_data;
+         memory[address] <= i_data;
      end
 end
  always @(*) begin
      if(i_read) 
-         readData <= memory_array[address];
+         readData_lsb <= memory[address];
+         readData_msb <= memory[address+1];
 end     
 endmodule: ICCM
