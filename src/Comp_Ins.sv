@@ -33,7 +33,7 @@ logic [DataWidth-1:0]i_instruction;
 logic c_type;
 
 assign i_instruction = {inst_msb , inst_lsb};
-assign c_type = (inst_lsb[1:0] == 2'b11) ? 1'b1 : 1'b0;
+assign c_type = (inst_lsb[1:0] == 2'b11) ? 1'b0 : 1'b1;
 assign instruction =  c_type ? c_instruction : i_instruction;
 
 buraq_rv32imc_expander c_expander(inst_lsb,i_type,ins_err,c_instruction);

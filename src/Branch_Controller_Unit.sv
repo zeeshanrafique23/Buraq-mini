@@ -30,7 +30,7 @@ module Branch_Controller_Unit#(parameter DataWidth=32)
 
 always_comb begin
     if(func3 == 3'b000) 
-       if (SRC_1 == SRC_2)                                                  //BEQ
+       if ($signed(SRC_1) == $signed(SRC_2))                             //BEQ
           Branch = 1'b1;
        else
           Branch = 1'b0;

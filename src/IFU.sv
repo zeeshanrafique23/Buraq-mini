@@ -57,11 +57,6 @@ always @ (posedge brq_clk)begin
     else 
     if (ifu_stall)
         PC_reg <=  PC_reg;
-    else
-        begin
-	if (!i_type)begin
-	      PC_reg <= PC_reg + 32'd2;
-	end
         else begin
         	if (ifu_next_pc_sel == 2'b10) begin               //JAL
         	    PC_reg <=  idu_jal_addr;
@@ -74,17 +69,13 @@ always @ (posedge brq_clk)begin
        		               PC_reg <= idu_branch_addr;
 		           end
        		           else begin
-       		               PC_reg <= PC_reg + 32'd4;
+       		               PC_reg <= i_type ? PC_reg + 32'd4 : PC_reg + 32'd2;
 		           end 
         	end
-        	else if (ifu_next_pc_sel == 2'b00)begin      // PC + 4
-   			   PC_reg <= PC_reg + 32'd4;
+         	else if (ifu_next_pc_sel == 2'b00)begin      
+   			   PC_reg <= i_type ? PC_reg + 32'd4 : PC_reg + 32'd2;  // PC + 4  | PC + 2
         	end
-		else begin
-			  PC_reg <= PC_reg + 32'd4;
-		end
     	 end
-     end
 end
 
 assign PC = PC_reg;
