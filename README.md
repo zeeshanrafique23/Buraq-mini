@@ -1,7 +1,7 @@
 # Buraq-mini-sv
 
 Buraq-mini is a small and efficient, 32-bit, in-order RISC-V core with a 5-stage pipeline that implements the RV32IMC instruction set architecture.  
-This processor have a capability to do the basic mathematics calculation like addition, subtraction, multiplication and this processor also support all the logical operation as well as logic and arithematic shifts. 
+This processor has a capability to do the basic mathematics calculation like addition, subtraction, multiplication, division and this processor also support all the logical operation as well as logic and arithematic shifts. 
 
 ## How to run any assembly code
 
