@@ -16,7 +16,7 @@ $ cd Buraq-mini-sv/src/
 Now you are in the folder where the hex_memory_file.mem is located. You can type ``ls`` command to see the all files.  
 Now edit this file by using any text editor, put the hex code of RISC-V assembly in this file and save it.
 ### Software needed to simulate this code
-You can use any HDL simulator to simlate this code like [Modelsim](https://www.mentor.com/company/higher_ed/modelsim-student-edition),  [Questa](https://www.mentor.com/products/fv/questa/), [Vivado](https://www.xilinx.com/products/design-tools/vivado.html), [ISE](https://www.xilinx.com/products/design-tools/ise-design-suite.html) but it you are using [verilator](https://www.veripool.org/wiki/verilator) then visit [Verilator-for-Buraq-Core-Simulation](https://github.com/merledu/Verilator-for-Buraq-Core-Simulation) to get the make file and instructions to run.
+You can use any HDL simulator to simlate this code like [Modelsim](https://www.mentor.com/company/higher_ed/modelsim-student-edition),  [Questa](https://www.mentor.com/products/fv/questa/), [Vivado](https://www.xilinx.com/products/design-tools/vivado.html), [ISE](https://www.xilinx.com/products/design-tools/ise-design-suite.html) but if you are using [verilator](https://www.veripool.org/wiki/verilator) then visit [Verilator-for-Buraq-Core-Simulation](https://github.com/merledu/Verilator-for-Buraq-Core-Simulation) to get the make file and instructions to run.
 
 ## Testing and Debugging
 
